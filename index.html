@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.1/font/bootstrap-icons.min.css" integrity="sha512-YBSrHBAMjFhWHodf0RF58XB/x9lmuwBtyJv1LWDHQa1nOaWNXfG3Etc/lEXfW+qBx8ne79JnzccDs59je/ccVA==" crossorigin="anonymous" />
+    <title>Weather</title>
+</head>
+<body>
+        <div class="container">
+            <div class="main-container">
+                <header>
+                    <div class="weather-info">
+                        <i id="clearDay" class="bi bi-brightness-high" style="display: none"></i>
+                        <i id="clearNight" class="bi bi-moon-stars" style="display: none"></i>
+                        <i id='mist'class="bi bi-water" style="display: none;"></i>
+                        <img class="loadingIcon" src="loading.gif" alt="loading">
+                        <p id="temp"> - -°C</p>
+                    </div>
+    
+                    <div class="city-info">
+                        <p id="cityName">Cidade</p>
+                        <p id="dayNow">Dia da semana , <span>--:--</span></p>
+                        <p id="tempDesc">Descrição</p>
+                    </div>
+                </header>
+
+                <main>
+                    
+                    <canvas id="myChart" width="400" height="120"></canvas>
+                    
+                </main>
+            </div>
+        </div>
+
+    <script src="main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

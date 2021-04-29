@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+
+    background-color: #C4C4C4;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container  {
+    background-color: #FFFFFF;
+
+    width: 1322px;
+    height: 701px;
+
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.main-container header {
+    display: inline-flex;
+    justify-content:space-between;
+
+    margin: 3rem;
+    align-items: center;
+}
+
+.main-container header .weather-info {
+    display: flex;
+
+    align-items: center;
+}
+
+.main-container header .weather-info p {
+    font-size: 6rem;
+    font-style: normal;
+    line-height: 3px;
+    
+    margin: 0;
+}
+
+.main-container header .weather-info .bi {
+    font-size: 7rem;
+    margin-right: 1rem;
+    color: #C4C4C4;
+
+}
+
+.main-container header .weather-info .loadingIcon {
+    width: 7rem;
+    margin-right: 1rem;
+}
+
+
+
+
+.main-container header .city-info {
+    text-align: right;
+}
+
+.main-container header .city-info p {
+    margin: 0;
+}
+
+.main-container header .city-info p:nth-child(n + 2) {
+    /* color: #ff6347; */
+    color: #C4C4C4;
+    font-size: 1.4rem;
+}
+
+.main-container header .city-info #cityName {
+    font-size: 3rem;
+
+    margin: 0;
+}
+
+
+
+
+.main-container main {
+    display: inline-flex;
+    justify-content:space-between;
+
+    margin: -1rem 3rem 0 3rem;
+    align-items: center;
+}
