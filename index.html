@@ -14,11 +14,14 @@
 <body>
         <div class="container">
             <div class="main-container">
+
                 <header>
                     <div class="weather-info">
                         <i id="clearDay" class="bi bi-brightness-high" style="display: none"></i>
                         <i id="clearNight" class="bi bi-moon-stars" style="display: none"></i>
                         <i id='mist'class="bi bi-water" style="display: none;"></i>
+                        <i id='brokeClouds' class="bi bi-cloud" style="display: none;"></i>
+                        <i id="cloudy" class="bi bi-cloud-fill" style="display: none;"></i>
                         <img class="loadingIcon" src="loading.gif" alt="loading">
                         <p id="temp"> - -°C</p>
                     </div>
@@ -32,9 +35,29 @@
 
                 <main>
                     
-                    <canvas id="myChart" width="400" height="120"></canvas>
+                    <canvas id="myChart" width="400" height="100"></canvas>
                     
                 </main>
+
+                <footer>
+                    <div class="grid-container">
+                        <div class="grid-item">
+                            <i class="bi bi-moisture"></i>
+                            <p id="humidity"></p>
+                            <!-- Humidade -->
+                        </div>
+                        <div class="grid-item">
+                            <i class="bi bi-wind"></i>
+                            <p id="wind"></p>
+                            <!-- Vento -->
+                        </div>
+                        <div class="grid-item">
+                            <i class="bi bi-water"></i>
+                            <p id="pressure"></p>
+                            <!-- Pressão -->
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
 

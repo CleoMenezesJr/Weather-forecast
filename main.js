@@ -7,9 +7,15 @@ let loadingIcon = document.querySelector('.loadingIcon')
 let tempclearDayIcon = document.querySelector('#clearDay')
 let tempclearNightIcon = document.querySelector('#clearNight')
 let mist = document.querySelector('#mist')
+let brokeClouds = document.querySelector('#brokeClouds')
+let cloudy = document.querySelector('#cloudy')
 
 let date = new Date()
 let dayName = new Array("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", 'sábado') 
+
+let humidity = document.querySelector('#humidity')
+let wind = document.querySelector('#wind')
+let pressure = document.querySelector('#pressure')
 
 
 
@@ -31,7 +37,8 @@ function showLocalization(position) {
     // alert(`${lat} X ${lon}`)
 
     // API
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-33.447487&lon=-70.673676&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-33.447487&lon=-70.673676&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
     .then(response => response.json())
     .then(datah => {
         const cityNameValue = datah['name'];
@@ -42,10 +49,17 @@ function showLocalization(position) {
         const tempMaxValue = datah['main']['temp_max']
         const feelsLikeValue = datah['main']['feels_like']
 
+        const humidityData =datah['main']['humidity']
+        const windData = datah['wind']['speed']
+        const pressureData = datah['main']['pressure']
+
         cityName.innerHTML = cityNameValue
         temp.innerHTML = `${parseInt(tempValue)}°C`
         tempDescription.innerHTML = tempDescValue
-        dayNow.innerHTML = `${dayName[date.getDay()]}, ${date.getHours("00:00")}:${date.getMinutes(00)}`
+        const hour = date.getHours()
+        const minutes = date.getMinutes()
+        dayNow.innerHTML = `${dayName[date.getDay()]},
+        ${hour < 10 ? '0' + hour : hour}:${minutes < 10 ? '0' + minutes : minutes}`
 
 
         if (tempDescValue == 'céu limpo') {
@@ -61,6 +75,14 @@ function showLocalization(position) {
 
             loadingIcon.style.display='none'
             mist.style.display='flex'
+
+        } else if (tempDescValue == 'nuvens quebradas') {
+            loadingIcon.style.display='none'
+            brokeClouds.style.display='flex'
+
+        } else if (tempDescValue == 'nublado') {
+            loadingIcon.style.display='none'
+            cloudy.style.display='flex'
 
         }
 
@@ -91,48 +113,19 @@ function showLocalization(position) {
         new Chart(
             document.getElementById('myChart'), config
         )
+
+        // footer info
+        
+        humidity.innerHTML = `${humidityData}%`
+        wind.innerHTML = `${windData} km/h`
+        pressure.innerHTML = `${pressureData} hPa`
+
         
     })
 
     .catch(err => alert("Can't get your city!"))
 }
 
-
-// function createChart() {
-//     console.log(tempMaxValue)
-//     const labels = [
-//         'Minima',
-//         'Máxima',
-//       ];
-//       const data = {
-//         labels: labels,
-//         datasets: [
-//         {
-//             label: 'Todo o dia',
-//             backgroundColor: 'rgb(255, 99, 132)',
-//             borderColor: 'rgb(255, 99, 132)',
-//             data: [tempMinValue, tempMaxValue],
-//         },
-//         {
-//             label: 'Sensação térmica',
-//             borderColor: 'rgba(255, 159, 64, 0.2)',
-//             backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-//             data: [14.78],
-
-//         }
-//         ]
-//       };
-    
-//     const config = {
-//         type: 'line',
-//         data,
-//         options: {}
-//     }
-    
-//     new Chart(
-//         document.getElementById('myChart'), config
-//     )
-// }
 
 
 getLocalization()
