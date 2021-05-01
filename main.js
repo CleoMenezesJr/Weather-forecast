@@ -38,8 +38,8 @@ function showLocalization(position) {
     // alert(`${lat} X ${lon}`)
 
     // API
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-33.447487&lon=-70.673676&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
-    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-33.447487&lon=-70.673676&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
     .then(response => response.json())
     .then(datah => {
         const cityNameValue = datah['name'];
@@ -101,18 +101,40 @@ function showLocalization(position) {
             datasets: [
             {
                 label: 'Todo o dia',
-                backgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: '#C4C4C4',
                 borderColor: 'rgb(255, 99, 132)',
                 data: [tempValue, tempMinValue, tempMaxValue, feelsLikeValue],
             }
             ]
         };
         
+        var delayed;
         const config = {
-            type: 'bar',
-            data,
-            options: {}
-        }
+          type: 'bar',
+          data: data,
+          options: {
+            animation: {
+              onComplete: () => {
+                delayed = true;
+              },
+              delay: (context) => {
+                let delay = 0;
+                if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                  delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                }
+                return delay;
+              },
+            },
+            scales: {
+              x: {
+                stacked: true,
+              },
+              y: {
+                stacked: true
+              }
+            }
+          }
+        };
         
         new Chart(
             document.getElementById('myChart'), config
