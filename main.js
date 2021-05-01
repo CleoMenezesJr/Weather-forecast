@@ -9,6 +9,7 @@ let tempclearNightIcon = document.querySelector('#clearNight')
 let mist = document.querySelector('#mist')
 let brokeClouds = document.querySelector('#brokeClouds')
 let cloudy = document.querySelector('#cloudy')
+let scattered = document.querySelector('#scattered')
 
 let date = new Date()
 let dayName = new Array("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", 'sábado') 
@@ -37,8 +38,8 @@ function showLocalization(position) {
     // alert(`${lat} X ${lon}`)
 
     // API
-    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-33.447487&lon=-70.673676&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-33.447487&lon=-70.673676&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
     .then(response => response.json())
     .then(datah => {
         const cityNameValue = datah['name'];
@@ -84,6 +85,9 @@ function showLocalization(position) {
             loadingIcon.style.display='none'
             cloudy.style.display='flex'
 
+        } else if (tempDescValue == 'nuvens dispersas') {
+            loadingIcon.style.display='none'
+            scattered.style.display='none'
         }
 
         const labels = [
