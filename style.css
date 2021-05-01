@@ -123,3 +123,42 @@ body {
     font-size: 3rem;
     margin: 0;
 }
+
+.grid-container .grid-1 {
+    animation: fadeIn 5s
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.grid-container .grid-2 {
+    animation: fadeIn 8s
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.grid-container .grid-3 {
+    animation: fadeIn 10s
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
