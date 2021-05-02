@@ -42,8 +42,8 @@ function showLocalization(position) {
     // alert(`${lat} X ${lon}`)
 
     // API
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-36.60664&lon=-72.10344&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
-    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-36.60664&lon=-72.10344&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
     .then(response => response.json())
     .then(datah => {
         const cityNameValue = datah['name'];
