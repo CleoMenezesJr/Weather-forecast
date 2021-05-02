@@ -247,7 +247,8 @@ body {
         line-height: 3px;
         
         color: #ECEDFC;
-        margin: 2rem
+        margin: 2rem;
+        padding-bottom: 2rem;
     }
 
     .main-container header .city-info {
