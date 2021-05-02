@@ -275,7 +275,7 @@ body {
 
     .main-container footer {
         z-index: 99;
-        margin: -1rem 0 0 0;
+        margin: -3rem 0 0 0;
     }
 
     .main-container footer .grid-container .grid-item{
