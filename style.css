@@ -269,13 +269,13 @@ body {
 
     .main-container main {
         z-index: 99;
-        margin: 1rem 1rem 0 1rem
+        margin: 2rem 
 
     }
 
     .main-container footer {
         z-index: 99;
-        margin: 0 0 0 0;
+        margin: -1rem 0 0 0;
     }
 
     .main-container footer .grid-container .grid-item{
