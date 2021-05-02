@@ -10,6 +10,10 @@ let mist = document.querySelector('#mist')
 let brokeClouds = document.querySelector('#brokeClouds')
 let cloudy = document.querySelector('#cloudy')
 let scattered = document.querySelector('#scattered')
+let rainHeavy = document.querySelector('#rainHeavy')
+let drizzle = document.querySelector('#drizzle')
+let cloudmoon = document.querySelector('#cloudMonn')
+let cloudsun = document.querySelector('#cloudSun')
 
 let date = new Date()
 let dayName = new Array("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", 'sábado') 
@@ -38,8 +42,8 @@ function showLocalization(position) {
     // alert(`${lat} X ${lon}`)
 
     // API
-    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-33.447487&lon=-70.673676&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-36.60664&lon=-72.10344&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
     .then(response => response.json())
     .then(datah => {
         const cityNameValue = datah['name'];
@@ -72,7 +76,7 @@ function showLocalization(position) {
                 tempclearDayIcon.style.display='flex'
             }
 
-        } else if (tempDescValue == 'nevoeiro') {
+        } else if (tempDescValue == 'nevoeiro' || tempDescValue == 'névoa') {
 
             loadingIcon.style.display='none'
             mist.style.display='flex'
@@ -88,59 +92,139 @@ function showLocalization(position) {
         } else if (tempDescValue == 'nuvens dispersas') {
             loadingIcon.style.display='none'
             scattered.style.display='flex'
+        } else if (tempDescValue == 'chuva forte') {
+          loadingIcon.style.display='none'
+          rainHeavy.style.display='flex'
+        } else if (tempDescValue == 'chuva moderada' || tempDescValue == 'chuva fraca') {
+          loadingIcon.style.display='none'
+          drizzle.style.display='flex'
+
+        } else if (tempDescValue == 'céu pouco nublado') {
+
+          loadingIcon.style.display='none'
+            if (date.getHours() >= 18 || date.getHours() <= 4) {
+                cloudmoon.style.display='flex'
+            } else if (date.getHours() >= 5 || date.getHours() <= 17) {
+                cloudsun.style.display='flex'
+            }
         }
 
-        const labels = [
-        'Agora',
-        'Minima',
-        'Máxima',
-        'Sensação'
-        ];
-        const data = {
-            labels: labels,
-            datasets: [
-            {
-                label: 'Todo o dia',
-                backgroundColor: '#C4C4C4',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [tempValue, tempMinValue, tempMaxValue, feelsLikeValue],
-            }
-            ]
-        };
+
+        if (screen.width <= 430) {
+          let mainChart = document.querySelector('#myChart')
+          mainChart.style.display="none"
+          let mobileChart = document.querySelector('#mobileChart')
+          mobileChart.style.display="initial"
         
-        var delayed;
-        const config = {
-          type: 'bar',
-          data: data,
-          options: {
-            animation: {
-              onComplete: () => {
-                delayed = true;
-              },
-              delay: (context) => {
-                let delay = 0;
-                if (context.type === 'data' && context.mode === 'default' && !delayed) {
-                  delay = context.dataIndex * 300 + context.datasetIndex * 100;
+          const labels = [
+            'Agora',
+            'Minima',
+            'Máxima',
+            'Sensação'
+            ];
+            const data = {
+                labels: labels,
+                datasets: [
+                {
+                    label: 'Todo o dia',
+                    backgroundColor: '#46DAAF',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [tempValue, tempMinValue, tempMaxValue, feelsLikeValue],
                 }
-                return delay;
-              },
-            },
-            scales: {
-              x: {
-                stacked: true,
-              },
-              y: {
-                stacked: true
+                ]
+            };
+            
+            var delayed;
+            const config = {
+              type: 'bar',
+              data: data,
+              options: {
+                indexAxis: 'y',
+                responsive: true,
+                animation: {
+                  onComplete: () => {
+                    delayed = true;
+                  },
+                  delay: (context) => {
+                    let delay = 0;
+                    if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                      delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                    }
+                    return delay;
+                  },
+                },
+                scales: {
+                  x: {
+                    stacked: true,
+                  },
+                  y: {
+                    stacked: true
+                  }
+                }
               }
-            }
-          }
-        };
-        
-        new Chart(
-            document.getElementById('myChart'), config
-        )
+            };
+            
+            
+            new Chart(
+                document.getElementById('mobileChart'), config
+            )
+        } else {
+
+          const labels = [
+            'Agora',
+            'Minima',
+            'Máxima',
+            'Sensação'
+            ];
+            const data = {
+                labels: labels,
+                datasets: [
+                {
+                    label: 'Todo o dia',
+                    backgroundColor: '#46DAAF',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [tempValue, tempMinValue, tempMaxValue, feelsLikeValue],
+                }
+                ]
+            };
+            
+            var delayed;
+            const config = {
+              type: 'bar',
+              data: data,
+              options: {
+                responsive: true,
+                animation: {
+                  onComplete: () => {
+                    delayed = true;
+                  },
+                  delay: (context) => {
+                    let delay = 0;
+                    if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                      delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                    }
+                    return delay;
+                  },
+                },
+                scales: {
+                  x: {
+                    stacked: true,
+                  },
+                  y: {
+                    stacked: true
+                  }
+                }
+              }
+            };
+            
+            
+            new Chart(
+                document.getElementById('myChart'), config
+            )
+        }
 
         // footer info
+        
         
         humidity.innerHTML = `${humidityData}%`
         wind.innerHTML = `${windData} km/h`

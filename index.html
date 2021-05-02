@@ -14,16 +14,22 @@
 </head>
 <body>
         <div class="container">
+            <div id="mobileHeader"></div>
+            <div id="mobileMain"></div>
             <div class="main-container">
 
                 <header>
                     <div class="weather-info">
-                        <i id="clearDay" class="bi bi-brightness-high" style="display: none"></i>
-                        <i id="clearNight" class="bi bi-moon-stars" style="display: none"></i>
-                        <i id='mist'class="bi bi-water" style="display: none;"></i>
-                        <i id='brokeClouds' class="bi bi-cloud" style="display: none;"></i>
-                        <i id="cloudy" class="bi bi-cloud-fill" style="display: none;"></i>
-                        <i id="scattered" class="bi bi-cloud-haze" style="display: none;"></i>
+                        <i id="clearDay" class="bi bi-brightness-high"></i>
+                        <i id="clearNight" class="bi bi-moon-stars"></i>
+                        <i id='mist'class="bi bi-water"></i>
+                        <i id='brokeClouds' class="bi bi-cloud"></i>
+                        <i id="cloudy" class="bi bi-cloud-fill"></i>
+                        <i id="scattered" class="bi bi-cloud-haze"></i>
+                        <i id="rainHeavy" class="bi bi-cloud-rain-heavy"></i>
+                        <i id="drizzle" class="bi bi-cloud-drizzle"></i>
+                        <i id="cloudMoon" class="bi bi-cloud-moon"></i>
+                        <i id="cloudSun" class="bi bi-cloud-sun"></i>
                         <img class="loadingIcon" src="loading.gif" alt="loading">
                         <p id="temp"> - -°C</p>
                     </div>
@@ -38,6 +44,7 @@
                 <main>
                     
                     <canvas id="myChart" width="400" height="100"></canvas>
+                    <canvas id="mobileChart" width="400" height="400" style="display: none;"></canvas>
                     
                 </main>
 
@@ -64,7 +71,15 @@
         </div>
 
     <script src="main.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        if (screen.width <= 430) {
+            let loadIcon = document.querySelector('.loadingIcon')
+            loadIcon.src = 'loadingM.gif'
+        } else {
+            let loadIcon = document.querySelector('.loadingIcon')
+            loadIcon.src = 'loading.gif'
+        }
+    </script>
 </body>
 </html>
