@@ -231,6 +231,9 @@ body {
         display: flex;
         flex-direction: column;
         justify-items: center;
+
+        padding-bottom: 2rem;
+
     }
 
     .main-container header .weather-info .bi {
@@ -248,7 +251,6 @@ body {
         
         color: #ECEDFC;
         margin: 2rem;
-        padding-bottom: 2rem;
     }
 
     .main-container header .city-info {
