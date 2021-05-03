@@ -12,7 +12,7 @@ let cloudy = document.querySelector('#cloudy')
 let scattered = document.querySelector('#scattered')
 let rainHeavy = document.querySelector('#rainHeavy')
 let drizzle = document.querySelector('#drizzle')
-let cloudmoon = document.querySelector('#cloudMonn')
+let cloudmoon = document.querySelector('#cloudMoon')
 let cloudsun = document.querySelector('#cloudSun')
 
 let date = new Date()
@@ -42,7 +42,7 @@ function showLocalization(position) {
     // alert(`${lat} X ${lon}`)
 
     // API
-    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-36.60664&lon=-72.10344&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
+    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=-33.02457&lon=-71.55183&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=d53aea542dc80b68d34fe89716185c70&lang=pt&units=metric`)
     .then(response => response.json())
     .then(datah => {
