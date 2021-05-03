@@ -47,8 +47,8 @@ body {
 .main-container  {
     background-color: #F5F6FF;
 
-    width: 1200px;
-    height: 650px;
+    max-width: 1280px;
+    max-height: 700px;
 
     border-radius: 50px;
 
@@ -139,6 +139,7 @@ body {
     margin-top: 1.5rem;
 }
 
+
 .grid-container .grid-item {
     display: flex;
     flex-direction: column;
@@ -148,18 +149,20 @@ body {
 }
 
 .grid-container i {
-    color: #FED234;
-    text-shadow: #FFF9E3 0.1em 0.1em 0.2em;
     font-size: 4rem;
+    color: #FED234;
 }
 
 .grid-container p {
     font-size: 2rem;
-    margin: 0;
+    margin-top: 0;
+    
 }
 
 .grid-container .grid-1 {
-    animation: fadeIn 2s
+    animation: fadeIn 2s;
+    text-align: center;
+
 }
 
 @keyframes fadeIn {
@@ -172,7 +175,8 @@ body {
 }
 
 .grid-container .grid-2 {
-    animation: fadeIn 4s
+    animation: fadeIn 4s;
+    text-align: center;
 }
 
 @keyframes fadeIn {
@@ -185,7 +189,8 @@ body {
 }
 
 .grid-container .grid-3 {
-    animation: fadeIn 6s
+    animation: fadeIn 6s;
+    text-align: center;
 }
 
 @keyframes fadeIn {
