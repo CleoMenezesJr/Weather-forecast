@@ -10,7 +10,7 @@ body {
 
 #mobileHeader {
     background-color: #656EEA;
-    height: 40vh;
+    height: 35vh;
     width: 100vw;
 
 
@@ -24,7 +24,7 @@ body {
 
 #mobileMain {
     background-color: #F5F6FF;
-    height: 65vh;
+    height: 70vh;
     width: 100vw;
     border-radius: 45px 45px 0 0;
 
