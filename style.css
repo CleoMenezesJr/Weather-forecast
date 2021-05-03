@@ -214,7 +214,7 @@ body {
 
 }
 
-@media (max-width: 430px) {
+@media (max-width: 530px) {
     body {
         background: #F5F6FF;
     }
@@ -245,6 +245,7 @@ body {
     .main-container header .weather-info .bi {
         font-size: 5rem;
         margin-right: 0;
+        margin-top: -1rem;
         text-shadow: none;
 
         color: #46DAAF;
@@ -256,7 +257,7 @@ body {
         line-height: 3px;
         
         color: #ECEDFC;
-        margin: 2rem;
+        margin: 3rem 2rem 2rem 2rem;
     }
 
     .main-container header .city-info {

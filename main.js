@@ -110,7 +110,7 @@ function showLocalization(position) {
         }
 
 
-        if (screen.width <= 430) {
+        if (screen.width <= 530) {
           let mainChart = document.querySelector('#myChart')
           mainChart.style.display="none"
           let mobileChart = document.querySelector('#mobileChart')
